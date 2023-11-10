@@ -15,18 +15,24 @@ pipeline {
             }
         }
 
-stage('SonarQube Analysis') {
+stage('SonaQube Analysis') {
             steps {
-              script {
-            // Assuming 'sonar-auth' is a token credential, retrieve it directly
-            def sonarToken = credentials('sonar-auth')
+                 script {
+                    withSonarQubeEnv('sonar-auth') {
+                        // Assuming 'sonar-auth' is a SonarQube token credential
+                        def sonarTokenCredentials = credentials('sonar-auth')
+                        def sonarToken = sonarTokenCredentials.getToken()
 
-            // Run SonarQube analysis with the token
-            sh 'mvn clean package sonar:sonar -Dsonar.login=${sonarToken}'
+                        // Run SonarQube analysis with the token
+                        sh "mvn clean package sonar:sonar -Dsonar.login=${sonarToken}"
+                    }
+                }
+              
+           
         }
 }
 
-            }
+            
 }
 
         
