@@ -15,15 +15,13 @@ pipeline {
             }
         }
 
-        stage('MVN SONARQUBE'){
+stage('SonarQube Analysis') {
+            steps {
+                  sh 'mvn sonar:sonar '
+            }
 
-           steps{
-               
-        // Run SonarQube analysis
-        sh 'sonar-scanner'
-            
-          }
-    }
+
+        
     }
 }
 
