@@ -15,16 +15,12 @@ pipeline {
             }
         }
 
-stage('SonaQube Analysis') {
+stage('Static code Analysis') {
             steps {
                  script {
-                    withSonarQubeEnv('') {
-                        // Assuming 'sonar-auth' is a SonarQube token credential
-                        def sonarTokenCredentials = credentials('sonar-auth')
-                        def sonarToken = sonarTokenCredentials.getToken()
-
-                        // Run SonarQube analysis with the token
-                        sh "mvn clean package sonar:sonar -Dsonar.login=${sonarToken}"
+                    withSonarQubeEnv(credentialsId:'sonar-auth') {
+                       
+                        sh 'mvn clean package sonar:sonar'
                     }
                 }
               
