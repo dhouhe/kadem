@@ -22,7 +22,7 @@ stage('SonarQube Analysis') {
             def sonarToken = credentials('sonar-auth')
 
             // Run SonarQube analysis with the token
-            sh "mvn clean package sonar:sonar -Dsonar.login=${sonarToken}"
+            sh 'mvn clean package sonar:sonar -Dsonar.login=${sonarToken}'
         }
 }
 
