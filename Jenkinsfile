@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-stage('Static code Analysis') {
+stage('SonarQube analysis') {
             steps {
                  script {
                     withSonarQubeEnv(credentialsId:'sonar-auth') {
