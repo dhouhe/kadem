@@ -19,7 +19,7 @@ stage('SonarQube Analysis') {
             steps {
                   sh 'mvn sonar:sonar '
             }
-
+}
 
         
     }
