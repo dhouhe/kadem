@@ -18,7 +18,7 @@ pipeline {
 stage('SonaQube Analysis') {
             steps {
                  script {
-                    withSonarQubeEnv('sonar-auth') {
+                    withSonarQubeEnv('') {
                         // Assuming 'sonar-auth' is a SonarQube token credential
                         def sonarTokenCredentials = credentials('sonar-auth')
                         def sonarToken = sonarTokenCredentials.getToken()
