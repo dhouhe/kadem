@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        SONARQUBE_USERNAME = 'admin'
+        SONARQUBE_PASSWORD = 'sonar'
+    }
     
     stages {
         stage('Checkout GIT') {
@@ -17,7 +21,8 @@ pipeline {
 
 stage('SonarQube Analysis') {
             steps {
-                  sh 'mvn sonar:sonar '
+                 sh "mvn sonar:sonar -Dsonar.login=${SONARQUBE_USERNAME} -Dsonar.password=${SONARQUBE_PASSWORD}"
+
             }
 }
 
