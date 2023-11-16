@@ -4,30 +4,33 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner; // Import this class
 
 import tn.esprit.spring.kaddem.entities.Departement;
 import tn.esprit.spring.kaddem.repositories.DepartementRepository;
 import tn.esprit.spring.kaddem.services.DepartementServiceImpl;
 
+@RunWith(MockitoJUnitRunner.class) // Move this annotation to the class level
 public class DepartementServiceImplTest {
-    @RunWith(MockitoJUnitRunner.class)
+
     @Test
     public void testRetrieveAllDepartements() {
-        // Créez un mock pour le repository
+        // Create a mock for the repository
         DepartementRepository departementRepositoryMock = mock(DepartementRepository.class);
 
-        // Créez une instance du service en utilisant le mock du repository
+        // Create an instance of the service using the mock repository
         DepartementServiceImpl departementService = new DepartementServiceImpl(departementRepositoryMock);
 
-        // Configurez le comportement du mock
+        // Configure the behavior of the mock
         when(departementRepositoryMock.findAll()).thenReturn(Arrays.asList(new Departement(), new Departement()));
 
-        // Appelez la méthode à tester
+        // Call the method to be tested
         List<Departement> result = departementService.retrieveAllDepartements();
 
-        // Vérifiez le résultat
+        // Verify the result
         assertEquals(2, result.size());
     }
 
-    // Ajoutez d'autres méthodes de test similaires pour les autres méthodes du service
+    // Add other similar test methods for other service methods
 }
