@@ -46,6 +46,7 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.9</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -60,6 +61,7 @@
             <version>5.7.0</version> <!-- Utilisez la version la plus récente -->
             <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 

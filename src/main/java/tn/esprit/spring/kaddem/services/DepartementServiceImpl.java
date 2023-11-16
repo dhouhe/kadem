@@ -19,9 +19,11 @@ public class DepartementServiceImpl implements IDepartementService{
 	DepartementRepository departementRepository;
 
 
+
 	public DepartementServiceImpl(DepartementRepository departementRepository) {
 		this.departementRepository = departementRepository;
 	}
+
 	public List<Departement> retrieveAllDepartements(){
 		return (List<Departement>) departementRepository.findAll();
 	}
