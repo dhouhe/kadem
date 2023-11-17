@@ -37,7 +37,11 @@ stage('Unit Tests') {
             }
         }
 
-
+stage('NEXUS'){
+            steps {
+               sh 'mvn deploy'
+                }
+            }
             
 }
 
