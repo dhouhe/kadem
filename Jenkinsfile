@@ -37,11 +37,19 @@ stage('Unit Tests') {
             }
         }
 
-stage('NEXUS'){
-            steps {
-               sh 'mvn deploy'
-                }
-            }
+stage('NEXUS') {
+    steps {
+        script {
+            def nexusUsername = 'admin'
+            def nexusPassword = 'nexus'
+
+            sh "mvn deploy -Dusername=${nexusUsername} -Dpassword=${nexusPassword}"
+        }
+    }
+}
+
+
+
             
 }
 
