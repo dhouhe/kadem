@@ -37,15 +37,17 @@ stage('Unit Tests') {
             }
         }
 
-stage('NEXUS') {
-    steps {
-        script {
-            
-            sh 'mvn deploy'
-        }
-    }
-}
+stage('Nexus Deploy') {
+            steps {
+                script {
+                    def nexusUsername = 'admin'
+                    def nexusPassword = 'nexus'
 
+                    // Commande Maven pour déployer en sautant les tests
+                    sh "mvn deploy -DskipTests -Dusername=${nexusUsername} -Dpassword=${nexusPassword}"
+                }
+            }
+        }
 
 
 
