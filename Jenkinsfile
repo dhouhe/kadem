@@ -40,13 +40,12 @@ stage('Unit Tests') {
 stage('NEXUS') {
     steps {
         script {
-            def nexusUsername = 'admin'
-            def nexusPassword = 'nexus'
-
-            sh "mvn deploy -Dusername=${nexusUsername} -Dpassword=${nexusPassword}"
+            def mavenSettings = readFile("/usr/share/maven/conf/setting.xml")
+            sh "mvn deploy --settings=${mavenSettings}"
         }
     }
 }
+
 
 
 
