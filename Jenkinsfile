@@ -40,8 +40,8 @@ stage('Unit Tests') {
 stage('NEXUS') {
     steps {
         script {
-            def mavenSettings = readFile("/usr/share/maven/conf/setting.xml")
-            sh "mvn deploy --settings=${mavenSettings}"
+            
+            sh 'mvn deploy'
         }
     }
 }
