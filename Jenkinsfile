@@ -37,13 +37,13 @@ stage('Unit Tests') {
             }
         }
 
-stage('Nexus Deploy') {
+  stage('Nexus Deploy') {
             steps {
                 script {
                     // Deploy using Nexus credentials
                     withCredentials([usernamePassword(credentialsId: 'nexus-auth', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USERNAME')]) {
-                sh "mvn clean deploy -DrepositoryId=snapshotRepo -DaltDeploymentRepository=snapshotRepo::default::http://192.168.33.10:8081/repository/maven-snapshots/"
-
+                        echo "Deploying to Nexus Repository..."
+                        sh "mvn clean deploy -DrepositoryId=snapshotRepo -DaltDeploymentRepository=snapshotRepo::default::http://192.168.33.10:8081/repository/maven-snapshots/"
                     }
                 }
             }
