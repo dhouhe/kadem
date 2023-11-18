@@ -37,17 +37,15 @@ stage('Unit Tests') {
             }
         }
 
-  stage('Nexus Deploy') {
-            steps {
-                script {
-                   
-                        sh 'mvn clean deploy -Dusername=<admin> -Dpassword=<nexus>'
-                    }
-                }
+ stage('Nexus Deploy') {
+    steps {
+        script {
+            withCredentials([usernamePassword(credentialsId: 'nexus-auth', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USERNAME')]) {
+                sh "mvn clean deploy -Dusername=${NEXUS_USERNAME} -Dpassword=${NEXUS_PASSWORD}"
             }
-        
-
-
+        }
+    }
+}
             
 }
 
