@@ -43,7 +43,7 @@ stage('Nexus Deploy') {
                    
 
                     // Commande Maven pour déployer en sautant les tests
-                    sh 'mvn clean deploy'
+                   sh 'mvn clean deploy -DrepositoryId=snapshotRepo'
                 }
             }
         }
