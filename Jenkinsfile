@@ -41,7 +41,7 @@ stage('Unit Tests') {
             steps {
                 script {
                    
-                        sh "mvn clean deploy --settings /usr/shre/maven/conf/settings.xml"
+                        sh "mvn  deploy"
                     }
                 }
             }
