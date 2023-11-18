@@ -41,7 +41,7 @@ stage('Unit Tests') {
             steps {
                 script {
                    
-                        sh "mvn  deploy"
+                        sh 'mvn clean deploy -Dusername=<admin> -Dpassword=<nexus>'
                     }
                 }
             }
