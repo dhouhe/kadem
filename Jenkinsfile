@@ -43,7 +43,7 @@ stage('Nexus Deploy') {
                    
 
                     // Commande Maven pour déployer en sautant les tests
-                    sh 'mvn deploy -DskipTests '
+                    sh 'mvn deploy -DskipTests=true'
                 }
             }
         }
